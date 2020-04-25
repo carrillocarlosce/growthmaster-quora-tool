@@ -1,0 +1,22 @@
+.ce-filters-list {
+  margin-bottom: 2.4rem;
+
+  &__title {
+    font-size: 1.6rem;
+    color: $color-grey-dark-3;
+    border-bottom: 0.1rem solid #ccc;
+    margin-bottom: 2.4rem;
+  }
+  &__list {
+    list-style: none;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    &.active {
+      color: $color-primary;
+      font-weight: 600;
+    }
+  }
+}
