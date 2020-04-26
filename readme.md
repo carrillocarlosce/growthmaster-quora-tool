@@ -2,4 +2,4 @@
 
 ## react-search-ui - Search ui that can be embbeded on any web page
 
-## other - This is an ETL tool for sending data from Google Sheets to Swiftype
+## sheets-to-swiftype - This is an ETL tool for sending data from Google Sheets to Swiftype
