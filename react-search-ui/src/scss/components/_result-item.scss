@@ -1,20 +1,52 @@
 .ce-result-item {
+  background: #f8f8f8;
+  padding: 2.4rem;
+  margin-bottom: 2.4rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  color: $color-grey-dark;
+  cursor: pointer;
+  &:hover {
+    background-color: #dddddd;
+  }
   &__title {
     font-size: 2.2rem;
     margin-bottom: 1rem;
   }
   &__description {
     font-size: 1.6rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2.4rem;
   }
+  // > :last-child {
+  //   padding-bottom: 2.4rem;
+  //   border-bottom: 0.1rem solid #ccc;
+  //   margin-bottom: 1.8rem;
+  // }
   &__link {
     font-size: 1.6rem;
-    padding-bottom: 2.4rem;
-    border-bottom: 0.1rem solid #ccc;
-    margin-bottom: 1.8rem;
+
     a {
       text-decoration: none;
       color: $color-primary;
     }
+  }
+  &__upvotes-count {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: $color-primary;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    transition: all 0.2s;
+    &:hover {
+      background: $color-primary-light;
+      .ce-tooltip {
+        opacity: 1;
+      }
+    }
+  }
+  &__upvotes-icon {
+    padding-right: 0.6rem;
   }
 }

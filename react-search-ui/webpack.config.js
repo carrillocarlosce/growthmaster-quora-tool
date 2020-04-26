@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "dist/[name].js",
+    filename: "[name].js",
   },
   module: {
     rules: [
@@ -62,5 +62,8 @@ module.exports = {
   ],
   resolve: {
     extensions: [".js", ".jsx", ".scss"],
+  },
+  devServer: {
+    publicPath: "/dist/",
   },
 };

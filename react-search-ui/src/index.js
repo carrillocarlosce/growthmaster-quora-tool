@@ -7,20 +7,21 @@ import {
   SearchBox,
   WithSearch,
   PagingInfo,
-  Sorting,
   Facet,
 } from "@elastic/react-search-ui";
 import { FiltersList } from "./components/FiltersList";
 
 import "./scss/style.scss";
 import { ResultItem } from "./components/ResultItem";
+import { SortList } from "./components/SortList";
+import { Paging } from "./components/Paging";
 
 const connector = new AppSearchAPIConnector({
-  searchKey: "search-371auk61r2bwqtdzocdgutmg",
-  engineName: "search-ui-examples",
-  hostIdentifier: "host-2376rb",
+  searchKey: "search-24ocrwykfz9j6vkqw2tm9nvo",
+  engineName: "growthmasters-viral-content-tool",
+  hostIdentifier: "host-n5kv8j",
 });
-
+const itemsPerPage = 20;
 class Root extends Component {
   render() {
     return (
@@ -29,9 +30,9 @@ class Root extends Component {
           debug: true,
           apiConnector: connector,
           searchQuery: {
-            disjunctiveFacets: ["states"],
+            disjunctiveFacets: ["audience"],
             facets: {
-              states: { type: "value", size: 30 },
+              audience: { type: "value", size: 30 },
             },
           },
         }}
@@ -63,26 +64,23 @@ class Root extends Component {
                     <div className="col-1-of-4">
                       <div className="ce-search__sidebar">
                         <Facet
-                          field="states"
-                          label="States"
+                          field="audience"
+                          label="Audience"
                           view={(data) => <FiltersList data={data} />}
-                          filterType="any"
+                          // filterType="any"
+                          show={20}
                         />
 
-                        {/* <Sorting
+                        <SortList
+                          label="Sort"
                           sortOptions={[
                             {
-                              name: "Relevance",
-                              value: "",
-                              direction: "",
-                            },
-                            {
-                              name: "Title",
-                              value: "title",
-                              direction: "asc",
+                              name: "Upvotes",
+                              value: "upvotes",
+                              direction: "desc",
                             },
                           ]}
-                        /> */}
+                        />
                       </div>
                     </div>
                     <div className="col-3-of-4">
@@ -93,11 +91,14 @@ class Root extends Component {
                         {results.map((r) => (
                           <ResultItem
                             key={r.id.raw}
-                            title={r.title.raw}
-                            description={r.description.raw}
-                            link={r.nps_link.raw}
+                            id={r.id.raw}
+                            upvotes={r.upvotes.raw}
+                            title={r.question.raw}
+                            description={r.opener_answer.raw}
+                            link={r.popular_answer.raw}
                           />
                         ))}
+                        <Paging />
                       </div>
                     </div>
                   </div>

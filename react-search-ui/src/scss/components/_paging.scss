@@ -1,0 +1,55 @@
+.ce-paging {
+  margin: 0;
+  margin-bottom: 2rem;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  li {
+    display: inline-block;
+    width: 4rem;
+    background: $color-primary;
+    text-align: center;
+    color: white;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+    margin-right: 1rem;
+    &:hover {
+      background: $color-primary-light;
+    }
+
+    &.rc-pagination-options {
+      display: none;
+    }
+  }
+
+  .rc-pagination-disabled,
+  .rc-pagination-disabled:hover {
+    background: #ddd;
+    color: #bebebe;
+    cursor: default;
+  }
+  .rc-pagination-prev {
+    padding: 0.6rem;
+    @include fa-icon;
+    &::before {
+      content: "\f060";
+    }
+  }
+  .rc-pagination-next {
+    padding: 0.6rem;
+    @include fa-icon;
+    &::before {
+      content: "\f061";
+    }
+  }
+  .rc-pagination-jump-next,
+  .rc-pagination-jump-prev {
+    padding: 0.6rem;
+    @include fa-icon;
+    &::before {
+      content: "\f141";
+    }
+  }
+}

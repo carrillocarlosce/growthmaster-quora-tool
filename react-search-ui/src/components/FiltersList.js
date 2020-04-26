@@ -28,7 +28,7 @@ function Filter({ filters, setFilter, data, clearFilters }) {
             }}
             className={`${selected ? "active" : ""} ce-filters-list__item`}
           >
-            {value} <span class="ce-filters-list__count">({count})</span>
+            {value} <span className="ce-filters-list__count">({count})</span>
           </li>
         ))}
       </ul>

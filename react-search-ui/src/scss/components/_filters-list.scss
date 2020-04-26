@@ -9,11 +9,17 @@
   }
   &__list {
     list-style: none;
+    margin: 0;
   }
   &__item {
     display: flex;
     justify-content: space-between;
     font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+      color: $color-primary-light;
+    }
     &.active {
       color: $color-primary;
       font-weight: 600;
