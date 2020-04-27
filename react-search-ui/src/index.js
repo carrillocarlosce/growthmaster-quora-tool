@@ -27,8 +27,8 @@ class Root extends Component {
     return (
       <SearchProvider
         config={{
-          debug: true,
           apiConnector: connector,
+          trackUrlState: false,
           searchQuery: {
             disjunctiveFacets: ["audience"],
             facets: {
