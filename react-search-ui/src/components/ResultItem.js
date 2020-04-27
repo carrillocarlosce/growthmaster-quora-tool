@@ -16,7 +16,7 @@ export function ResultItem({ id, title, description, link, upvotes }) {
               className="fa fa-arrow-up ce-result-item__upvotes-icon"
               aria-hidden="true"
             ></i>
-            {upvotes.format()}
+            {(upvotes || 0).format()}
           </div>
         </div>
         {/* <div className="ce-result-item__link">
