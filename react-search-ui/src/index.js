@@ -67,7 +67,7 @@ class Root extends Component {
                           field="audience"
                           label="Audience"
                           view={(data) => <FiltersList data={data} />}
-                          // filterType="any"
+                          filterType="any"
                           show={20}
                         />
 
