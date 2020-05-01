@@ -29,6 +29,8 @@ class Root extends Component {
         config={{
           apiConnector: connector,
           trackUrlState: false,
+          alwaysSearchOnInitialLoad: true,
+
           searchQuery: {
             disjunctiveFacets: ["audience"],
             facets: {
