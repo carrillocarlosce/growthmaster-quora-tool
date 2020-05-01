@@ -145,15 +145,15 @@ async function parseRows(rows) {
     const question = row[indexes.question];
     const url = row[indexes.url];
     const upvotes = +row[indexes.upvotes].replace(",", "");
-    const popular_answer = row[indexes.popular_answer];
+    const answer_preview = row[indexes.answer_preview];
     const audience = row[indexes.audience];
-    const id = md5(popular_answer);
+    const id = md5(url);
     return {
       id,
       question,
       url,
       upvotes,
-      popular_answer,
+      answer_preview,
       audience,
     };
   });
@@ -168,7 +168,12 @@ async function parseRows(rows) {
     }
     return (itemsSet[item.id] = item);
   });
-  const documents = Object.values(itemsSet);
+  const documentsRaw = Object.values(itemsSet);
+  const documents = documentsRaw.filter((item) => {
+    const hasQuestion = Boolean(item.question);
+    const hasUrl = Boolean(item.url);
+    return hasQuestion && hasUrl;
+  });
   console.log("TOTAL ROWS: " + data.length);
   console.log("UNIQUE ROWS: " + documents.length);
   console.log(documents);

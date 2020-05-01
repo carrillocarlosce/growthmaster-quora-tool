@@ -1,7 +1,7 @@
 module.exports = {
-  question: 0,
-  url: 1,
-  upvotes: 4,
-  popular_answer: 3,
-  audience: 5,
+  question: 0, // THIS IS QUESTION
+  url: 1, // THIS USE TO BE THE URL TO THE QUESTION ITSELF, AS WE DONT HAVE ANYMORE I'LL PUT THE ANSWER URL
+  upvotes: 4, // THIS IS THE UPVOTES COUNT
+  answer_preview: 3, // THIS IS THE PREVIEW OF THE ANSWER
+  audience: 5, // THIS IS THE FILTER
 };
