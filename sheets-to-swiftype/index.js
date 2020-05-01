@@ -141,12 +141,12 @@ function getSheet(auth, sheetId) {
 // [END sheets_quickstart]
 async function parseRows(rows) {
   const data = rows.map((row) => {
-    const question = row[0];
-    const url = row[1];
-    const upvotes = +row[23].replace(",", "");
-    const popular_answer = row[24];
-    const opener_answer = row[19];
-    const audience = row[28];
+    const indexes = require("./columnsIndex");
+    const question = row[indexes.question];
+    const url = row[indexes.url];
+    const upvotes = +row[indexes.upvotes].replace(",", "");
+    const popular_answer = row[indexes.popular_answer];
+    const audience = row[indexes.audience];
     const id = md5(popular_answer);
     return {
       id,
@@ -154,7 +154,6 @@ async function parseRows(rows) {
       url,
       upvotes,
       popular_answer,
-      opener_answer,
       audience,
     };
   });
@@ -172,7 +171,7 @@ async function parseRows(rows) {
   const documents = Object.values(itemsSet);
   console.log("TOTAL ROWS: " + data.length);
   console.log("UNIQUE ROWS: " + documents.length);
-
+  console.log(documents);
   const fragments = [];
   const fragmentLength = 100;
   for (let i = 0; i * fragmentLength < documents.length; i++) {
@@ -181,7 +180,7 @@ async function parseRows(rows) {
     );
   }
   try {
-    await postDocuments(fragments);
+    // await postDocuments(fragments);
     console.log("Task completed succesfully...");
   } catch (error) {
     console.log("An error has ocurred.");
