@@ -180,7 +180,7 @@ async function parseRows(rows) {
     );
   }
   try {
-    // await postDocuments(fragments);
+    await postDocuments(fragments);
     console.log("Task completed succesfully...");
   } catch (error) {
     console.log("An error has ocurred.");
