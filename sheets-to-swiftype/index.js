@@ -24,7 +24,7 @@ const client = new AppSearchClient(
   "host-n5kv8j",
   "private-gch3qddbk2n4wx5aybtcb2ar"
 );
-const engineName = "growthmasters-viral-content-tool";
+const engineName = "growthmasters-viral-content-tool-new";
 // If modifying these scopes, delete token.json.
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
 // The file token.json stores the user's access and refresh tokens, and is
