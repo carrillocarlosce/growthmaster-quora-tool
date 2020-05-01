@@ -18,7 +18,7 @@ import { Paging } from "./components/Paging";
 
 const connector = new AppSearchAPIConnector({
   searchKey: "search-24ocrwykfz9j6vkqw2tm9nvo",
-  engineName: "growthmasters-viral-content-tool",
+  engineName: "growthmasters-viral-content-tool-new",
   hostIdentifier: "host-n5kv8j",
 });
 const itemsPerPage = 20;
@@ -92,10 +92,10 @@ class Root extends Component {
                           <ResultItem
                             key={r.id.raw}
                             id={r.id.raw}
-                            upvotes={r.upvotes.raw}
-                            title={r.question.raw}
-                            description={r.opener_answer.raw}
-                            link={r.popular_answer.raw}
+                            upvotes={(r.upvotes || {}).raw}
+                            title={(r.question || {}).raw}
+                            description={(r.answer_preview || {}).raw}
+                            link={(r.url || {}).raw}
                           />
                         ))}
                         <Paging />
