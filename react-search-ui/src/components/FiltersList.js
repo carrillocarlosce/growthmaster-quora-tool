@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withSearch } from "@elastic/react-search-ui";
 
 function Filter({ filters, setFilter, data, clearFilters }) {
-  console.log({ data });
   return (
     <div className="ce-filters-list">
       <div className="ce-filters-list__title">{data.label}</div>

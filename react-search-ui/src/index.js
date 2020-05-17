@@ -21,7 +21,12 @@ const connector = new AppSearchAPIConnector({
   engineName: "growthmasters-viral-content-tool-new",
   hostIdentifier: "host-n5kv8j",
 });
-const itemsPerPage = 20;
+// const connector = new AppSearchAPIConnector({
+//   searchKey: "search-24ocrwykfz9j6vkqw2tm9nvo",
+//   engineName: "test-new-filter",
+//   hostIdentifier: "host-n5kv8j",
+// });
+
 class Root extends Component {
   render() {
     return (
@@ -32,9 +37,10 @@ class Root extends Component {
           alwaysSearchOnInitialLoad: true,
 
           searchQuery: {
-            disjunctiveFacets: ["audience"],
+            disjunctiveFacets: ["audience", "types"],
             facets: {
               audience: { type: "value", size: 30 },
+              types: { type: "value" },
             },
           },
         }}
@@ -72,7 +78,13 @@ class Root extends Component {
                           filterType="any"
                           show={20}
                         />
-
+                        <Facet
+                          field="types"
+                          label="Type"
+                          view={(data) => <FiltersList data={data} />}
+                          filterType="any"
+                          show={20}
+                        />
                         <SortList
                           label="Sort"
                           sortOptions={[
@@ -96,6 +108,7 @@ class Root extends Component {
                             id={r.id.raw}
                             upvotes={(r.upvotes || {}).raw}
                             title={(r.question || {}).raw}
+                            types={(r.types || []).raw}
                             description={(r.answer_preview || {}).raw}
                             link={(r.url || {}).raw}
                           />

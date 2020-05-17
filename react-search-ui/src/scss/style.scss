@@ -17,6 +17,7 @@ $padding: 16px;
 .ce-tooltip {
   position: absolute;
   bottom: 100%;
+  visibility: hidden;
   left: 50%;
   background: rgba(0, 0, 0, 0.8);
   padding: 0.2rem 1.2rem;

@@ -15,7 +15,18 @@
   }
   &__description {
     font-size: 1.6rem;
-    margin-bottom: 2.4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+  &__types {
+    text-transform: capitalize;
+    color: #ff7c09;
+    font-style: italic;
+    font-size: small;
+    margin: 1.2rem 0;
   }
   // > :last-child {
   //   padding-bottom: 2.4rem;
@@ -43,6 +54,7 @@
       background: $color-primary-light;
       .ce-tooltip {
         opacity: 1;
+        visibility: visible;
       }
     }
   }
