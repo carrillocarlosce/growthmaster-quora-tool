@@ -25,6 +25,8 @@ const client = new AppSearchClient(
   "private-gch3qddbk2n4wx5aybtcb2ar"
 );
 const engineName = "growthmasters-viral-content-tool-new";
+// const engineName = "test-new-filter";
+
 // If modifying these scopes, delete token.json.
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
 // The file token.json stores the user's access and refresh tokens, and is
@@ -107,15 +109,19 @@ async function wait(time) {
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 async function listMajors(auth) {
-  const sheets = require("./sheets");
-  for (let i = 0; i < sheets.length; i++) {
-    const sheetId = sheets[i];
-    const rows = await getSheet(auth, sheetId);
-    if (rows.length) {
-      await parseRows(rows);
-      wait(10000);
-    } else {
-      console.log("No data found.");
+  const sheetTypes = require("./sheets");
+  for (const type of sheetTypes) {
+    const sheets = type.sheets;
+    const types = type.types;
+    for (let i = 0; i < sheets.length; i++) {
+      const sheetId = sheets[i];
+      const rows = await getSheet(auth, sheetId);
+      if (rows.length) {
+        await parseRows(rows, types);
+        wait(10000);
+      } else {
+        console.log("No data found.");
+      }
     }
   }
 }
@@ -133,13 +139,14 @@ function getSheet(auth, sheetId) {
           reject("The API returned an error: " + err);
         }
         const rows = res.data.values;
+        console.log(res);
         resolve(rows);
       }
     );
   });
 }
 // [END sheets_quickstart]
-async function parseRows(rows) {
+async function parseRows(rows, types) {
   const data = rows.map((row) => {
     const indexes = require("./columnsIndex");
     const question = row[indexes.question];
@@ -155,6 +162,7 @@ async function parseRows(rows) {
       upvotes,
       answer_preview,
       audience,
+      types,
     };
   });
   const itemsSet = {};
